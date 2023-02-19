@@ -1,4 +1,4 @@
-package backend.model.entity;
+package com.mf.minhasfinancas.model.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -19,11 +19,11 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-
+import com.mf.minhasfinancas.model.enums.StatusLancamento;
+import com.mf.minhasfinancas.model.enums.TipoLancamento;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-//import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,7 +39,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-//@Data
+
 public class Lancamento {
 	
 	@Id
