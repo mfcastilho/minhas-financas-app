@@ -13,12 +13,14 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 
-@Entity
-@Table(name = "usuario", schema = "financas")
+
+
 @Data
 @EqualsAndHashCode
 @ToString
 @Builder
+@Entity
+@Table(name = "usuario", schema = "financas")
 public class Usuario {
 	
 	@Id
@@ -36,10 +38,6 @@ public class Usuario {
 	private String senha;
 	
 	
-	
-	
-	
-	
-	
+		
 	
 }
