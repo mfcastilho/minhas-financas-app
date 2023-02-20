@@ -77,6 +77,4 @@ public class Lancamento {
 	private StatusLancamento status;
 
 
-
-
 }

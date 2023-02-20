@@ -10,12 +10,16 @@ import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 
 
 
 @Data
+@Getter
+@Setter
 @EqualsAndHashCode
 @ToString
 @Builder
@@ -28,6 +32,8 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
+	@Setter
 	@Column(name = "nome")
 	private String nome;
 	
