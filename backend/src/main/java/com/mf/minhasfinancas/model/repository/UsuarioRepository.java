@@ -12,7 +12,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	//ao usarmos a convenção exists o spring faz automaticamente  a consulta sql
 	boolean existsByEmail(String email);
 	
-	Optional<Usuario> findByEmail(String email);
+	 Optional<Usuario> findByEmail(String email);
 }
 
 
