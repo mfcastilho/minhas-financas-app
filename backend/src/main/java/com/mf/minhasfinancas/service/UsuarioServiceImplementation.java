@@ -1,5 +1,7 @@
 package com.mf.minhasfinancas.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +26,20 @@ public class UsuarioServiceImplementation implements UsuarioService{
 
 	@Override
 	public Usuario autenticar(String email, String senha) {
-		// TODO Auto-generated method stub
+		
+		
+		
+		
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Usuario salvarUsuario(Usuario novoUsuario) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		validarEmail(novoUsuario.getEmail());
+		
+		return repository.save(novoUsuario);
 	}
 
 	@Override
