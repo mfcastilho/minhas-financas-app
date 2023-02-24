@@ -3,9 +3,11 @@ package com.mf.minhasfinancas.service;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
@@ -23,11 +25,18 @@ import com.mf.minhasfinancas.model.repository.UsuarioRepository;
 public class UsuarioServiceTest {
 	
 	
-	@Autowired
+	//@Autowired
 	UsuarioService service;
 	
-	@Autowired
+	//@Autowired
 	UsuarioRepository repository;
+	
+	
+	@BeforeEach
+	public void setUp() {
+		repository = Mockito.mock(UsuarioRepository.class);
+		service = new UsuarioServiceImplementation(repository);
+	}
 	
 	
 	@Test
@@ -37,7 +46,11 @@ public class UsuarioServiceTest {
 		assertDoesNotThrow(()->{
 			
 			//cenario
-			repository.deleteAll();
+			//UsuarioRepository usuarioRepositoryMock =  Mockito.mock(UsuarioRepository.class); 
+			Mockito.when(repository.existsByEmail(Mockito.anyString())).thenReturn(false);
+			
+			
+			//repository.deleteAll();
 			
 			//ação
 			service.validarEmail("email@email.com");
@@ -53,8 +66,10 @@ public class UsuarioServiceTest {
 		assertThrows(RegraNegocioException.class, ()->{
 			
 			//cenario
-			Usuario usuario = Usuario.builder().nome("usuario").email("email@email.com").build();
-			repository.save(usuario);
+			//Usuario usuario = Usuario.builder().nome("usuario").email("email@email.com").build();
+			//repository.save(usuario);
+			
+			Mockito.when(repository.existsByEmail(Mockito.anyString())).thenReturn(true);
 			
 			//ação
 			service.validarEmail("email@email.com");
