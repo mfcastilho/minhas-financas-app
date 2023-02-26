@@ -52,6 +52,7 @@ public class UsuarioServiceImplementation implements UsuarioService{
 		
 		return repository.save(novoUsuario);
 	}
+	
 
 	@Override
 	public void validarEmail(String email) {
