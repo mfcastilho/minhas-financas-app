@@ -2,6 +2,7 @@ package com.mf.minhasfinancas.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -96,8 +97,14 @@ public class LancamentoServiceImplementation implements LancamentoService{
 		}
 		
 		if(lancamento.getTipo() == null) {
-			throw new RegraNegocioException("Informe uum tipo de Lançamento");
+			throw new RegraNegocioException("Informe um tipo de Lançamento");
 		}
+	}
+
+	@Override
+	public Optional<Lancamento> obterPorId(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id);
 	}
 
 }
