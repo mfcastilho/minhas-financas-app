@@ -32,8 +32,7 @@ public class LancamentoServiceImplementation implements LancamentoService{
 		
 		validar(lancamento);
 		lancamento.setStatus(StatusLancamento.PENDENTE);
-		return repository.save(lancamento);
-		
+		return repository.save(lancamento);	
 	}
 
 	@Override
